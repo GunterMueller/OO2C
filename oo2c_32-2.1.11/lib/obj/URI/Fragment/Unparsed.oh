@@ -1,0 +1,45 @@
+#ifndef _MODULE_URI_Fragment_Unparsed_
+#define _MODULE_URI_Fragment_Unparsed_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <TextRider.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#include <ADT/StringBuffer.oh>
+#include <URI.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct URI_Fragment_Unparsed__FragmentDesc *URI_Fragment_Unparsed__Fragment;
+typedef struct URI_Fragment_Unparsed__FragmentDesc {
+  Object__String unparsed;
+} URI_Fragment_Unparsed__FragmentDesc;
+extern void URI_Fragment_Unparsed__Init(URI_Fragment_Unparsed__Fragment frag, Object__String unparsed);
+extern URI_Fragment_Unparsed__Fragment URI_Fragment_Unparsed__New(Object__String unparsed);
+extern URI_Fragment_Unparsed__Fragment URI_Fragment_Unparsed__FragmentDesc_Clone(URI_Fragment_Unparsed__Fragment frag);
+#define _TBN_URI_Fragment_Unparsed__FragmentDesc_Clone 0
+typedef URI_Fragment_Unparsed__Fragment (*_TBP_URI_Fragment_Unparsed__FragmentDesc_Clone)(URI_Fragment_Unparsed__Fragment frag);
+extern void URI_Fragment_Unparsed__FragmentDesc_Copy(URI_Fragment_Unparsed__Fragment frag, URI__Fragment dest);
+#define _TBN_URI_Fragment_Unparsed__FragmentDesc_Copy 1
+typedef void (*_TBP_URI_Fragment_Unparsed__FragmentDesc_Copy)(URI_Fragment_Unparsed__Fragment frag, URI__Fragment dest);
+extern void URI_Fragment_Unparsed__FragmentDesc_ParseFragment(URI_Fragment_Unparsed__Fragment frag, Object__CharsLatin1 str, OOC_INT16 offset);
+#define _TBN_URI_Fragment_Unparsed__FragmentDesc_ParseFragment 2
+typedef void (*_TBP_URI_Fragment_Unparsed__FragmentDesc_ParseFragment)(URI_Fragment_Unparsed__Fragment frag, Object__CharsLatin1 str, OOC_INT16 offset);
+extern void URI_Fragment_Unparsed__FragmentDesc_WriteXML(URI_Fragment_Unparsed__Fragment frag, TextRider__Writer w);
+#define _TBN_URI_Fragment_Unparsed__FragmentDesc_WriteXML 3
+typedef void (*_TBP_URI_Fragment_Unparsed__FragmentDesc_WriteXML)(URI_Fragment_Unparsed__Fragment frag, TextRider__Writer w);
+extern void URI_Fragment_Unparsed__FragmentDesc_Append(URI_Fragment_Unparsed__Fragment frag, ADT_StringBuffer__StringBuffer sb);
+#define _TBN_URI_Fragment_Unparsed__FragmentDesc_Append 4
+typedef void (*_TBP_URI_Fragment_Unparsed__FragmentDesc_Append)(URI_Fragment_Unparsed__Fragment frag, ADT_StringBuffer__StringBuffer sb);
+extern void OOC_URI_Fragment_Unparsed_init(void);
+extern void OOC_URI_Fragment_Unparsed_open(RT0__Module client);
+extern void OOC_URI_Fragment_Unparsed_destroy(void);
+extern void OOC_URI_Fragment_Unparsed_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_URI_Fragment_Unparsed__Fragment;
+extern RT0__StructDesc _td_URI_Fragment_Unparsed__FragmentDesc;
+#endif /* _MODULE_URI_Fragment_Unparsed_ */
+
+/* --- */

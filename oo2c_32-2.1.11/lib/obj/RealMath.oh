@@ -1,0 +1,21 @@
+#ifndef _MODULE_RealMath_
+#define _MODULE_RealMath_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <LRealMath.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#define RealMath__pi 3.1415927410125732f
+#define RealMath__exp1 2.7182817459106445f
+extern OOC_INT32 ooc_round_real32(OOC_REAL32 x);
+extern void OOC_RealMath_init(void);
+extern void OOC_RealMath_open(RT0__Module client);
+extern void OOC_RealMath_destroy(void);
+extern void OOC_RealMath_close(RT0__Module client);
+
+/* run-time meta data */
+#endif /* _MODULE_RealMath_ */
+
+/* --- */

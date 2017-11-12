@@ -1,0 +1,116 @@
+#ifndef _MODULE_Codec_YEnc_
+#define _MODULE_Codec_YEnc_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <Codec.oh>
+#include <ADT/StringBuffer.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct Codec_YEnc__YEncDesc *Codec_YEnc__YEnc;
+typedef struct Codec_YEnc__YEncDesc {
+  OOC_INT8 _class;
+  OOC_CHAR8 __pad1;
+  OOC_CHAR8 __pad2;
+  OOC_CHAR8 __pad3;
+  Object__String preferredName;
+} Codec_YEnc__YEncDesc;
+typedef struct Codec_YEnc__EncoderDesc *Codec_YEnc__Encoder;
+typedef struct Codec_YEnc__EncoderDesc {
+  Codec__Encoder escape;
+  OOC_INT32 incompleteAvail;
+} Codec_YEnc__EncoderDesc;
+typedef struct Codec_YEnc__DecoderDesc *Codec_YEnc__Decoder;
+typedef struct Codec_YEnc__DecoderDesc {
+  OOC_CHAR8 endsWithEscape;
+} Codec_YEnc__DecoderDesc;
+typedef struct Codec_YEnc__Header {
+  OOC_INT32 part;
+  OOC_INT32 line;
+  OOC_INT32 size;
+  OOC_CHAR8 fileName[256];
+  OOC_INT32 partBegin;
+  OOC_INT32 partEnd;
+  OOC_INT32 endSize;
+  OOC_INT32 endPart;
+  OOC_CHAR8 hasPCrc32;
+  OOC_CHAR8 __pad285;
+  OOC_CHAR8 __pad286;
+  OOC_CHAR8 __pad287;
+  OOC_INT32 endPCrc32;
+  OOC_CHAR8 hasCrc32;
+  OOC_CHAR8 __pad293;
+  OOC_CHAR8 __pad294;
+  OOC_CHAR8 __pad295;
+  OOC_INT32 endCrc32;
+  OOC_INT32 shortLines;
+} Codec_YEnc__Header;
+extern Codec_YEnc__YEnc Codec_YEnc__yenc;
+extern void Codec_YEnc__DecoderDesc_INIT(Codec_YEnc__Decoder dec);
+#define _TBN_Codec_YEnc__DecoderDesc_INIT 0
+typedef void (*_TBP_Codec_YEnc__DecoderDesc_INIT)(Codec_YEnc__Decoder dec);
+extern void Codec_YEnc__EncoderDesc_INIT(Codec_YEnc__Encoder enc);
+#define _TBN_Codec_YEnc__EncoderDesc_INIT 0
+typedef void (*_TBP_Codec_YEnc__EncoderDesc_INIT)(Codec_YEnc__Encoder enc);
+extern Codec_YEnc__Decoder Codec_YEnc__YEncDesc_NewDecoder(Codec_YEnc__YEnc c);
+#define _TBN_Codec_YEnc__YEncDesc_NewDecoder 5
+typedef Codec_YEnc__Decoder (*_TBP_Codec_YEnc__YEncDesc_NewDecoder)(Codec_YEnc__YEnc c);
+extern Codec_YEnc__Encoder Codec_YEnc__YEncDesc_NewEncoder(Codec_YEnc__YEnc c);
+#define _TBN_Codec_YEnc__YEncDesc_NewEncoder 6
+typedef Codec_YEnc__Encoder (*_TBP_Codec_YEnc__YEncDesc_NewEncoder)(Codec_YEnc__YEnc c);
+extern OOC_CHAR8 Codec_YEnc__IsEOL(OOC_CHAR8 ch);
+extern OOC_INT32 Codec_YEnc__LineBegin(const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, struct Codec_YEnc__Header *header, RT0__Struct header__tag);
+extern OOC_INT32 Codec_YEnc__LinePart(const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, struct Codec_YEnc__Header *header, RT0__Struct header__tag);
+extern OOC_INT32 Codec_YEnc__LineData(const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, struct Codec_YEnc__Header *header, RT0__Struct header__tag);
+extern OOC_INT32 Codec_YEnc__LineEnd(const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, struct Codec_YEnc__Header *header, RT0__Struct header__tag);
+extern void Codec_YEnc__DecoderDesc_Decode(Codec_YEnc__Decoder dec, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_YEnc__DecoderDesc_Decode 2
+typedef void (*_TBP_Codec_YEnc__DecoderDesc_Decode)(Codec_YEnc__Decoder dec, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+extern void Codec_YEnc__DecoderDesc_Reset(Codec_YEnc__Decoder dec);
+#define _TBN_Codec_YEnc__DecoderDesc_Reset 3
+typedef void (*_TBP_Codec_YEnc__DecoderDesc_Reset)(Codec_YEnc__Decoder dec);
+extern void Codec_YEnc__EncoderDesc_EncodeLatin1(Codec_YEnc__Encoder enc, const OOC_CHAR8 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_YEnc__EncoderDesc_EncodeLatin1 3
+typedef void (*_TBP_Codec_YEnc__EncoderDesc_EncodeLatin1)(Codec_YEnc__Encoder enc, const OOC_CHAR8 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+extern void NORETURN Codec_YEnc__EncoderDesc_EncodeUTF16(Codec_YEnc__Encoder enc, const OOC_CHAR16 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b) NORETURN2;
+#define _TBN_Codec_YEnc__EncoderDesc_EncodeUTF16 4
+typedef void NORETURN (*_TBP_Codec_YEnc__EncoderDesc_EncodeUTF16)(Codec_YEnc__Encoder enc, const OOC_CHAR16 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b) NORETURN2;
+extern void Codec_YEnc__EncoderDesc_Closure(Codec_YEnc__Encoder enc, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_YEnc__EncoderDesc_Closure 6
+typedef void (*_TBP_Codec_YEnc__EncoderDesc_Closure)(Codec_YEnc__Encoder enc, ADT_StringBuffer__StringBuffer b);
+extern void Codec_YEnc__EncoderDesc_Reset(Codec_YEnc__Encoder enc);
+#define _TBN_Codec_YEnc__EncoderDesc_Reset 7
+typedef void (*_TBP_Codec_YEnc__EncoderDesc_Reset)(Codec_YEnc__Encoder enc);
+extern void Codec_YEnc__Register(void);
+extern void OOC_Codec_YEnc_init(void);
+extern void OOC_Codec_YEnc_open(RT0__Module client);
+extern void OOC_Codec_YEnc_destroy(void);
+extern void OOC_Codec_YEnc_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_Codec_YEnc__YEnc;
+extern RT0__StructDesc _td_Codec_YEnc__YEncDesc;
+extern RT0__StructDesc _td_Codec_YEnc__Encoder;
+extern RT0__StructDesc _td_Codec_YEnc__EncoderDesc;
+extern RT0__StructDesc _td_Codec_YEnc__Decoder;
+extern RT0__StructDesc _td_Codec_YEnc__DecoderDesc;
+extern RT0__StructDesc _td_Codec_YEnc__Header;
+extern RT0__StructDesc _td_Codec_YEnc__2016;
+extern RT0__StructDesc _td_Codec_YEnc__2967;
+extern RT0__StructDesc _td_Codec_YEnc__3027;
+extern RT0__StructDesc _td_Codec_YEnc__3279;
+extern RT0__StructDesc _td_Codec_YEnc__3422;
+extern RT0__StructDesc _td_Codec_YEnc__4124;
+extern RT0__StructDesc _td_Codec_YEnc__4353;
+extern RT0__StructDesc _td_Codec_YEnc__7248;
+extern RT0__StructDesc _td_Codec_YEnc__8449;
+extern RT0__StructDesc _td_Codec_YEnc__10322;
+extern RT0__StructDesc _td_Codec_YEnc__13094;
+extern RT0__StructDesc _td_Codec_YEnc__13275;
+extern RT0__StructDesc _td_Codec_YEnc__14628;
+extern RT0__StructDesc _td_Codec_YEnc__14819;
+extern RT0__StructDesc _td_Codec_YEnc__15948;
+#endif /* _MODULE_Codec_YEnc_ */
+
+/* --- */

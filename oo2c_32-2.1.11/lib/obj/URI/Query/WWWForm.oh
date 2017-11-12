@@ -1,0 +1,57 @@
+#ifndef _MODULE_URI_Query_WWWForm_
+#define _MODULE_URI_Query_WWWForm_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#include <ADT/Dictionary.oh>
+#include <ADT/ArrayList.oh>
+#include <ADT/StringBuffer.oh>
+#include <TextRider.oh>
+#include <URI.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct URI_Query_WWWForm__QueryDesc *URI_Query_WWWForm__Query;
+typedef struct URI_Query_WWWForm__QueryDesc {
+  ADT_ArrayList__ArrayList names;
+  ADT_ArrayList__ArrayList values;
+  ADT_Dictionary__Dictionary dict;
+} URI_Query_WWWForm__QueryDesc;
+extern void URI_Query_WWWForm__Init(URI_Query_WWWForm__Query query);
+extern URI_Query_WWWForm__Query URI_Query_WWWForm__New(void);
+extern URI_Query_WWWForm__Query URI_Query_WWWForm__QueryDesc_Clone(URI_Query_WWWForm__Query query);
+#define _TBN_URI_Query_WWWForm__QueryDesc_Clone 0
+typedef URI_Query_WWWForm__Query (*_TBP_URI_Query_WWWForm__QueryDesc_Clone)(URI_Query_WWWForm__Query query);
+extern void URI_Query_WWWForm__QueryDesc_Copy(URI_Query_WWWForm__Query query, URI__Query dest);
+#define _TBN_URI_Query_WWWForm__QueryDesc_Copy 1
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_Copy)(URI_Query_WWWForm__Query query, URI__Query dest);
+extern void URI_Query_WWWForm__QueryDesc_Add(URI_Query_WWWForm__Query query, Object__String name, Object__String value);
+#define _TBN_URI_Query_WWWForm__QueryDesc_Add 5
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_Add)(URI_Query_WWWForm__Query query, Object__String name, Object__String value);
+extern void URI_Query_WWWForm__QueryDesc_ParseString(URI_Query_WWWForm__Query query, const OOC_CHAR8 b[], OOC_LEN b_0d, OOC_INT32 pos, OOC_INT32 endpos);
+#define _TBN_URI_Query_WWWForm__QueryDesc_ParseString 6
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_ParseString)(URI_Query_WWWForm__Query query, const OOC_CHAR8 b[], OOC_LEN b_0d, OOC_INT32 pos, OOC_INT32 endpos);
+extern void URI_Query_WWWForm__QueryDesc_ParseQuery(URI_Query_WWWForm__Query query, Object__CharsLatin1 str, OOC_INT16 offset);
+#define _TBN_URI_Query_WWWForm__QueryDesc_ParseQuery 2
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_ParseQuery)(URI_Query_WWWForm__Query query, Object__CharsLatin1 str, OOC_INT16 offset);
+extern void URI_Query_WWWForm__QueryDesc_WriteXML(URI_Query_WWWForm__Query query, TextRider__Writer w);
+#define _TBN_URI_Query_WWWForm__QueryDesc_WriteXML 3
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_WriteXML)(URI_Query_WWWForm__Query query, TextRider__Writer w);
+extern void URI_Query_WWWForm__QueryDesc_Append(URI_Query_WWWForm__Query query, ADT_StringBuffer__StringBuffer sb);
+#define _TBN_URI_Query_WWWForm__QueryDesc_Append 4
+typedef void (*_TBP_URI_Query_WWWForm__QueryDesc_Append)(URI_Query_WWWForm__Query query, ADT_StringBuffer__StringBuffer sb);
+extern void OOC_URI_Query_WWWForm_init(void);
+extern void OOC_URI_Query_WWWForm_open(RT0__Module client);
+extern void OOC_URI_Query_WWWForm_destroy(void);
+extern void OOC_URI_Query_WWWForm_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_URI_Query_WWWForm__Query;
+extern RT0__StructDesc _td_URI_Query_WWWForm__QueryDesc;
+extern RT0__StructDesc _td_URI_Query_WWWForm__2904;
+extern RT0__StructDesc _td_URI_Query_WWWForm__2996;
+#endif /* _MODULE_URI_Query_WWWForm_ */
+
+/* --- */

@@ -1,0 +1,24 @@
+#ifndef _MODULE_XML_Basic_DataType_
+#define _MODULE_XML_Basic_DataType_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <URI.oh>
+#include <XML/Basic/Element.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+extern OOC_CHAR8 XML_Basic_DataType__GetIntAttr(XML_DTD__AttValue value, OOC_INT32 *number);
+extern OOC_CHAR8 XML_Basic_DataType__GetStringLatin1Attr(XML_DTD__AttValue value, OOC_CHAR8 str[], OOC_LEN str_0d);
+extern OOC_CHAR8 XML_Basic_DataType__GetURIAttr(volatile XML_DTD__AttValue value, volatile URI__URI baseURI, volatile URI__URI *uri);
+extern void OOC_XML_Basic_DataType_init(void);
+extern void OOC_XML_Basic_DataType_open(RT0__Module client);
+extern void OOC_XML_Basic_DataType_destroy(void);
+extern void OOC_XML_Basic_DataType_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_XML_Basic_DataType__258;
+extern RT0__StructDesc _td_XML_Basic_DataType__553;
+#endif /* _MODULE_XML_Basic_DataType_ */
+
+/* --- */

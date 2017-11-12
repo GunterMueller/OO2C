@@ -1,0 +1,136 @@
+#ifndef _MODULE_XML_Basic_Element_
+#define _MODULE_XML_Basic_Element_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <XML/DTD.oh>
+#include <XML/Locator.oh>
+#include <XML/Writer.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef XML_UnicodeBuffer__CharArray XML_Basic_Element__String;
+typedef XML_DTD__StringVar XML_Basic_Element__StringVar;
+typedef OOC_INT32 XML_Basic_Element__CharPos;
+typedef XML_DTD__AttValue XML_Basic_Element__AttValue;
+typedef struct XML_Basic_Element__StringBufferDesc *XML_Basic_Element__StringBuffer;
+typedef struct XML_Basic_Element__StringBufferDesc {
+  OOC_INT32 length;
+  XML_UnicodeBuffer__CharArray array;
+} XML_Basic_Element__StringBufferDesc;
+typedef struct XML_Basic_Element__ElementDesc *XML_Basic_Element__Element;
+typedef struct XML_Basic_Element__ElementDesc {
+  XML_Basic_Element__Element next;
+} XML_Basic_Element__ElementDesc;
+typedef struct XML_Basic_Element__PCDataDesc *XML_Basic_Element__PCData;
+typedef struct XML_Basic_Element__PCDataDesc {
+  XML_Basic_Element__Element next;
+  XML_Basic_Element__StringBuffer chars;
+} XML_Basic_Element__PCDataDesc;
+typedef struct XML_Basic_Element__ListDesc *XML_Basic_Element__List;
+typedef struct XML_Basic_Element__ListDesc {
+  XML_Basic_Element__Element head;
+  XML_Basic_Element__Element tail;
+} XML_Basic_Element__ListDesc;
+typedef XML_Basic_Element__Element (*XML_Basic_Element__FactoryFunction)(void);
+typedef struct XML_Basic_Element__ElementFactoryDesc *XML_Basic_Element__ElementFactory;
+typedef struct XML_Basic_Element__ElementFactoryDesc {
+  XML_Basic_Element__ElementFactory next;
+  XML_UnicodeBuffer__CharArray name;
+  XML_Basic_Element__FactoryFunction gen;
+} XML_Basic_Element__ElementFactoryDesc;
+typedef struct XML_Basic_Element__RootFactoryDesc *XML_Basic_Element__RootFactory;
+typedef struct XML_Basic_Element__RootFactoryDesc {
+  XML_Basic_Element__ElementFactory list;
+} XML_Basic_Element__RootFactoryDesc;
+extern XML_Basic_Element__RootFactory XML_Basic_Element__NewRootFactory(void);
+extern void XML_Basic_Element__RootFactoryDesc_AddFactory(XML_Basic_Element__RootFactory rf, const XML_DTD__StringVar name__ref, OOC_LEN name_0d, XML_Basic_Element__FactoryFunction gen);
+#define _TBN_XML_Basic_Element__RootFactoryDesc_AddFactory 0
+typedef void (*_TBP_XML_Basic_Element__RootFactoryDesc_AddFactory)(XML_Basic_Element__RootFactory rf, const XML_DTD__StringVar name__ref, OOC_LEN name_0d, XML_Basic_Element__FactoryFunction gen);
+extern XML_Basic_Element__Element XML_Basic_Element__RootFactoryDesc_NewElement(XML_Basic_Element__RootFactory rf, XML_UnicodeBuffer__CharArray name);
+#define _TBN_XML_Basic_Element__RootFactoryDesc_NewElement 1
+typedef XML_Basic_Element__Element (*_TBP_XML_Basic_Element__RootFactoryDesc_NewElement)(XML_Basic_Element__RootFactory rf, XML_UnicodeBuffer__CharArray name);
+extern void XML_Basic_Element__InitElement(XML_Basic_Element__Element elem);
+extern void XML_Basic_Element__ElementDesc_SetLocator(XML_Basic_Element__Element elem, XML_Locator__Locator l);
+#define _TBN_XML_Basic_Element__ElementDesc_SetLocator 0
+typedef void (*_TBP_XML_Basic_Element__ElementDesc_SetLocator)(XML_Basic_Element__Element elem, XML_Locator__Locator l);
+extern OOC_CHAR8 XML_Basic_Element__ElementDesc_IsChildName(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+#define _TBN_XML_Basic_Element__ElementDesc_IsChildName 1
+typedef OOC_CHAR8 (*_TBP_XML_Basic_Element__ElementDesc_IsChildName)(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+extern XML_Basic_Element__Element XML_Basic_Element__ElementDesc_NewChild(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+#define _TBN_XML_Basic_Element__ElementDesc_NewChild 2
+typedef XML_Basic_Element__Element (*_TBP_XML_Basic_Element__ElementDesc_NewChild)(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+extern XML_UnicodeBuffer__CharArray XML_Basic_Element__ElementDesc_MissingChild(XML_Basic_Element__Element elem);
+#define _TBN_XML_Basic_Element__ElementDesc_MissingChild 3
+typedef XML_UnicodeBuffer__CharArray (*_TBP_XML_Basic_Element__ElementDesc_MissingChild)(XML_Basic_Element__Element elem);
+extern void XML_Basic_Element__ElementDesc_AddChild(XML_Basic_Element__Element elem, XML_Basic_Element__Element child);
+#define _TBN_XML_Basic_Element__ElementDesc_AddChild 4
+typedef void (*_TBP_XML_Basic_Element__ElementDesc_AddChild)(XML_Basic_Element__Element elem, XML_Basic_Element__Element child);
+extern OOC_CHAR8 XML_Basic_Element__ElementDesc_IsAttributeName(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+#define _TBN_XML_Basic_Element__ElementDesc_IsAttributeName 5
+typedef OOC_CHAR8 (*_TBP_XML_Basic_Element__ElementDesc_IsAttributeName)(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName);
+extern OOC_CHAR8 XML_Basic_Element__ElementDesc_AddAttribute(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName, XML_DTD__AttValue value);
+#define _TBN_XML_Basic_Element__ElementDesc_AddAttribute 6
+typedef OOC_CHAR8 (*_TBP_XML_Basic_Element__ElementDesc_AddAttribute)(XML_Basic_Element__Element elem, XML_UnicodeBuffer__CharArray localName, XML_DTD__AttValue value);
+extern XML_UnicodeBuffer__CharArray XML_Basic_Element__ElementDesc_MissingAttribute(XML_Basic_Element__Element elem);
+#define _TBN_XML_Basic_Element__ElementDesc_MissingAttribute 7
+typedef XML_UnicodeBuffer__CharArray (*_TBP_XML_Basic_Element__ElementDesc_MissingAttribute)(XML_Basic_Element__Element elem);
+extern OOC_CHAR8 XML_Basic_Element__ElementDesc_HasMixedContent(XML_Basic_Element__Element elem);
+#define _TBN_XML_Basic_Element__ElementDesc_HasMixedContent 8
+typedef OOC_CHAR8 (*_TBP_XML_Basic_Element__ElementDesc_HasMixedContent)(XML_Basic_Element__Element elem);
+extern void XML_Basic_Element__ElementDesc_AddCharacters(XML_Basic_Element__Element elem, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+#define _TBN_XML_Basic_Element__ElementDesc_AddCharacters 9
+typedef void (*_TBP_XML_Basic_Element__ElementDesc_AddCharacters)(XML_Basic_Element__Element elem, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+extern XML_UnicodeBuffer__CharArray XML_Basic_Element__ElementDesc_CheckElement(XML_Basic_Element__Element elem);
+#define _TBN_XML_Basic_Element__ElementDesc_CheckElement 10
+typedef XML_UnicodeBuffer__CharArray (*_TBP_XML_Basic_Element__ElementDesc_CheckElement)(XML_Basic_Element__Element elem);
+extern void XML_Basic_Element__ElementDesc_Write(XML_Basic_Element__Element elem, XML_Writer__Writer writer);
+#define _TBN_XML_Basic_Element__ElementDesc_Write 11
+typedef void (*_TBP_XML_Basic_Element__ElementDesc_Write)(XML_Basic_Element__Element elem, XML_Writer__Writer writer);
+extern XML_Basic_Element__List XML_Basic_Element__NewList(void);
+extern void XML_Basic_Element__ListDesc_Append(XML_Basic_Element__List list, XML_Basic_Element__Element elem);
+#define _TBN_XML_Basic_Element__ListDesc_Append 0
+typedef void (*_TBP_XML_Basic_Element__ListDesc_Append)(XML_Basic_Element__List list, XML_Basic_Element__Element elem);
+extern OOC_CHAR8 XML_Basic_Element__ListDesc_IsEmpty(XML_Basic_Element__List list);
+#define _TBN_XML_Basic_Element__ListDesc_IsEmpty 1
+typedef OOC_CHAR8 (*_TBP_XML_Basic_Element__ListDesc_IsEmpty)(XML_Basic_Element__List list);
+extern void XML_Basic_Element__ListDesc_Write(XML_Basic_Element__List list, XML_Writer__Writer w);
+#define _TBN_XML_Basic_Element__ListDesc_Write 2
+typedef void (*_TBP_XML_Basic_Element__ListDesc_Write)(XML_Basic_Element__List list, XML_Writer__Writer w);
+extern XML_UnicodeBuffer__CharArray XML_Basic_Element__NewString(const XML_DTD__StringVar value__ref, OOC_LEN value_0d);
+extern XML_Basic_Element__StringBuffer XML_Basic_Element__NewStringBuffer(const XML_DTD__StringVar value__ref, OOC_LEN value_0d);
+extern void XML_Basic_Element__StringBufferDesc_AddCharacters(XML_Basic_Element__StringBuffer sb, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+#define _TBN_XML_Basic_Element__StringBufferDesc_AddCharacters 0
+typedef void (*_TBP_XML_Basic_Element__StringBufferDesc_AddCharacters)(XML_Basic_Element__StringBuffer sb, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+extern void XML_Basic_Element__InitPCData(XML_Basic_Element__PCData pcdata);
+extern XML_Basic_Element__PCData XML_Basic_Element__NewPCData(void);
+extern void XML_Basic_Element__PCDataDesc_AddCharacters(XML_Basic_Element__PCData pcdata, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+#define _TBN_XML_Basic_Element__PCDataDesc_AddCharacters 9
+typedef void (*_TBP_XML_Basic_Element__PCDataDesc_AddCharacters)(XML_Basic_Element__PCData pcdata, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd);
+extern void XML_Basic_Element__PCDataDesc_Write(XML_Basic_Element__PCData pcdata, XML_Writer__Writer writer);
+#define _TBN_XML_Basic_Element__PCDataDesc_Write 11
+typedef void (*_TBP_XML_Basic_Element__PCDataDesc_Write)(XML_Basic_Element__PCData pcdata, XML_Writer__Writer writer);
+extern void XML_Basic_Element__PCDataDesc_Normalize(XML_Basic_Element__PCData pcdata, OOC_CHAR8 stripLeadingWS, OOC_CHAR8 stripTrailingWS);
+#define _TBN_XML_Basic_Element__PCDataDesc_Normalize 12
+typedef void (*_TBP_XML_Basic_Element__PCDataDesc_Normalize)(XML_Basic_Element__PCData pcdata, OOC_CHAR8 stripLeadingWS, OOC_CHAR8 stripTrailingWS);
+extern void OOC_XML_Basic_Element_init(void);
+extern void OOC_XML_Basic_Element_open(RT0__Module client);
+extern void OOC_XML_Basic_Element_destroy(void);
+extern void OOC_XML_Basic_Element_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_XML_Basic_Element__StringBuffer;
+extern RT0__StructDesc _td_XML_Basic_Element__StringBufferDesc;
+extern RT0__StructDesc _td_XML_Basic_Element__Element;
+extern RT0__StructDesc _td_XML_Basic_Element__ElementDesc;
+extern RT0__StructDesc _td_XML_Basic_Element__PCData;
+extern RT0__StructDesc _td_XML_Basic_Element__PCDataDesc;
+extern RT0__StructDesc _td_XML_Basic_Element__List;
+extern RT0__StructDesc _td_XML_Basic_Element__ListDesc;
+extern RT0__StructDesc _td_XML_Basic_Element__ElementFactory;
+extern RT0__StructDesc _td_XML_Basic_Element__ElementFactoryDesc;
+extern RT0__StructDesc _td_XML_Basic_Element__RootFactory;
+extern RT0__StructDesc _td_XML_Basic_Element__RootFactoryDesc;
+#endif /* _MODULE_XML_Basic_Element_ */
+
+/* --- */

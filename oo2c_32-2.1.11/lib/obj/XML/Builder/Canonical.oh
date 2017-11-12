@@ -1,0 +1,83 @@
+#ifndef _MODULE_XML_Builder_Canonical_
+#define _MODULE_XML_Builder_Canonical_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <IO.oh>
+#include <URI.oh>
+#include <XML/UnicodeCodec.oh>
+#include <XML/DTD.oh>
+#include <XML/Builder.oh>
+#include <XML/UnicodeBuffer.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#define XML_Builder_Canonical__firstCanonicalForm 1
+#define XML_Builder_Canonical__secondCanonicalForm 2
+#define XML_Builder_Canonical__thirdCanonicalForm 3
+typedef struct XML_Builder_Canonical__Attribute {
+  XML_UnicodeBuffer__CharArray name;
+  XML_DTD__AttrDecl decl;
+  XML_DTD__AttValue value;
+} XML_Builder_Canonical__Attribute;
+typedef struct XML_Builder_Canonical__Attribute *XML_Builder_Canonical__AttributeList;
+typedef struct XML_Builder_Canonical__NodeDesc *XML_Builder_Canonical__Node;
+typedef struct XML_Builder_Canonical__NodeDesc {
+  XML_Builder_Canonical__Node next;
+  XML_DTD__Notation notation;
+} XML_Builder_Canonical__NodeDesc;
+typedef struct XML_Builder_Canonical__BuilderDesc *XML_Builder_Canonical__Builder;
+typedef struct XML_Builder_Canonical__BuilderDesc {
+  XML_UnicodeBuffer__Output out;
+  OOC_INT8 format;
+  OOC_CHAR8 __pad5;
+  OOC_CHAR8 __pad6;
+  OOC_CHAR8 __pad7;
+  XML_Builder_Canonical__Node notationList;
+  XML_Builder_Canonical__AttributeList attrList;
+  OOC_INT32 lenAttrList;
+} XML_Builder_Canonical__BuilderDesc;
+extern void XML_Builder_Canonical__BuilderDesc_StartDocument(XML_Builder_Canonical__Builder b, XML_DTD__ExternalEntity documentEntity);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_StartDocument 2
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_StartDocument)(XML_Builder_Canonical__Builder b, XML_DTD__ExternalEntity documentEntity);
+extern void XML_Builder_Canonical__BuilderDesc_EndDocument(volatile XML_Builder_Canonical__Builder b);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_EndDocument 3
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_EndDocument)(XML_Builder_Canonical__Builder b);
+extern void XML_Builder_Canonical__BuilderDesc_StartElement(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_StartElement 6
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_StartElement)(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName);
+extern void XML_Builder_Canonical__BuilderDesc_Attribute(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName, XML_DTD__AttrDecl attrDecl, XML_DTD__AttValue value, OOC_CHAR8 specified);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_Attribute 8
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_Attribute)(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName, XML_DTD__AttrDecl attrDecl, XML_DTD__AttValue value, OOC_CHAR8 specified);
+extern void XML_Builder_Canonical__BuilderDesc_AttributesDone(XML_Builder_Canonical__Builder b);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_AttributesDone 10
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_AttributesDone)(XML_Builder_Canonical__Builder b);
+extern void XML_Builder_Canonical__BuilderDesc_EndElement(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_EndElement 7
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_EndElement)(XML_Builder_Canonical__Builder b, XML_DTD__NamespaceDeclaration namespaceDecl, XML_UnicodeBuffer__CharArray localName);
+extern void XML_Builder_Canonical__BuilderDesc_Notation(XML_Builder_Canonical__Builder b, XML_DTD__Notation notation);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_Notation 18
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_Notation)(XML_Builder_Canonical__Builder b, XML_DTD__Notation notation);
+extern void XML_Builder_Canonical__BuilderDesc_ProcessingInstruction(XML_Builder_Canonical__Builder b, XML_UnicodeBuffer__CharArray target, XML_DTD__StringVar content, OOC_LEN content_0d, OOC_INT32 contentStart, OOC_INT32 contentEnd, URI__URI baseURI);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_ProcessingInstruction 19
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_ProcessingInstruction)(XML_Builder_Canonical__Builder b, XML_UnicodeBuffer__CharArray target, XML_DTD__StringVar content, OOC_LEN content_0d, OOC_INT32 contentStart, OOC_INT32 contentEnd, URI__URI baseURI);
+extern void XML_Builder_Canonical__BuilderDesc_Characters(XML_Builder_Canonical__Builder b, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd, OOC_INT8 elementWhitespace);
+#define _TBN_XML_Builder_Canonical__BuilderDesc_Characters 12
+typedef void (*_TBP_XML_Builder_Canonical__BuilderDesc_Characters)(XML_Builder_Canonical__Builder b, XML_DTD__StringVar chars, OOC_LEN chars_0d, OOC_INT32 charsStart, OOC_INT32 charsEnd, OOC_INT8 elementWhitespace);
+extern XML_Builder_Canonical__Builder XML_Builder_Canonical__New(IO__ByteChannel outputChannel, XML_UnicodeCodec__Factory codecFactory, OOC_INT8 format);
+extern void OOC_XML_Builder_Canonical_init(void);
+extern void OOC_XML_Builder_Canonical_open(RT0__Module client);
+extern void OOC_XML_Builder_Canonical_destroy(void);
+extern void OOC_XML_Builder_Canonical_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_XML_Builder_Canonical__Attribute;
+extern RT0__StructDesc _td_XML_Builder_Canonical__1306;
+extern RT0__StructDesc _td_XML_Builder_Canonical__AttributeList;
+extern RT0__StructDesc _td_XML_Builder_Canonical__Node;
+extern RT0__StructDesc _td_XML_Builder_Canonical__NodeDesc;
+extern RT0__StructDesc _td_XML_Builder_Canonical__Builder;
+extern RT0__StructDesc _td_XML_Builder_Canonical__BuilderDesc;
+#endif /* _MODULE_XML_Builder_Canonical_ */
+
+/* --- */

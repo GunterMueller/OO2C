@@ -1,0 +1,22 @@
+#ifndef _MODULE_RandomNumbers_
+#define _MODULE_RandomNumbers_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#define RandomNumbers__modulo 2147483647
+extern void RandomNumbers__GetSeed(OOC_INT32 *seed);
+extern void RandomNumbers__PutSeed(OOC_INT32 seed);
+extern OOC_INT32 RandomNumbers__RND(OOC_INT32 range);
+extern OOC_REAL32 RandomNumbers__Random(void);
+extern void OOC_RandomNumbers_init(void);
+extern void OOC_RandomNumbers_open(RT0__Module client);
+extern void OOC_RandomNumbers_destroy(void);
+extern void OOC_RandomNumbers_close(RT0__Module client);
+
+/* run-time meta data */
+#endif /* _MODULE_RandomNumbers_ */
+
+/* --- */

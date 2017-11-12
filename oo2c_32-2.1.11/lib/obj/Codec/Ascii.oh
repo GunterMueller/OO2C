@@ -1,0 +1,69 @@
+#ifndef _MODULE_Codec_Ascii_
+#define _MODULE_Codec_Ascii_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <ADT/StringBuffer.oh>
+#include <Codec.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct Codec_Ascii__AsciiDesc *Codec_Ascii__Ascii;
+typedef struct Codec_Ascii__AsciiDesc {
+  OOC_INT8 _class;
+  OOC_CHAR8 __pad1;
+  OOC_CHAR8 __pad2;
+  OOC_CHAR8 __pad3;
+  Object__String preferredName;
+} Codec_Ascii__AsciiDesc;
+typedef struct Codec_Ascii__DecoderDesc *Codec_Ascii__Decoder;
+typedef struct Codec_Ascii__DecoderDesc {
+  char __dummy;
+} Codec_Ascii__DecoderDesc;
+typedef struct Codec_Ascii__EncoderDesc *Codec_Ascii__Encoder;
+typedef struct Codec_Ascii__EncoderDesc {
+  Codec__Encoder escape;
+} Codec_Ascii__EncoderDesc;
+extern Codec_Ascii__Ascii Codec_Ascii__codec;
+extern void Codec_Ascii__AsciiDesc_INIT(Codec_Ascii__Ascii c, const OOC_CHAR8 preferredName__ref[], OOC_LEN preferredName_0d);
+#define _TBN_Codec_Ascii__AsciiDesc_INIT 4
+typedef void (*_TBP_Codec_Ascii__AsciiDesc_INIT)(Codec_Ascii__Ascii c, const OOC_CHAR8 preferredName__ref[], OOC_LEN preferredName_0d);
+extern Codec_Ascii__Decoder Codec_Ascii__AsciiDesc_NewDecoder(Codec_Ascii__Ascii c);
+#define _TBN_Codec_Ascii__AsciiDesc_NewDecoder 5
+typedef Codec_Ascii__Decoder (*_TBP_Codec_Ascii__AsciiDesc_NewDecoder)(Codec_Ascii__Ascii c);
+extern Codec_Ascii__Encoder Codec_Ascii__AsciiDesc_NewEncoder(Codec_Ascii__Ascii c);
+#define _TBN_Codec_Ascii__AsciiDesc_NewEncoder 6
+typedef Codec_Ascii__Encoder (*_TBP_Codec_Ascii__AsciiDesc_NewEncoder)(Codec_Ascii__Ascii c);
+extern Object__String Codec_Ascii__AsciiDesc_DecodeRegion(Codec_Ascii__Ascii c, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end);
+#define _TBN_Codec_Ascii__AsciiDesc_DecodeRegion 7
+typedef Object__String (*_TBP_Codec_Ascii__AsciiDesc_DecodeRegion)(Codec_Ascii__Ascii c, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end);
+extern void Codec_Ascii__DecoderDesc_Decode(Codec_Ascii__Decoder dec, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_Ascii__DecoderDesc_Decode 2
+typedef void (*_TBP_Codec_Ascii__DecoderDesc_Decode)(Codec_Ascii__Decoder dec, const OOC_CHAR8 data[], OOC_LEN data_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+extern void Codec_Ascii__EncoderDesc_EncodeLatin1(Codec_Ascii__Encoder enc, const OOC_CHAR8 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_Ascii__EncoderDesc_EncodeLatin1 3
+typedef void (*_TBP_Codec_Ascii__EncoderDesc_EncodeLatin1)(Codec_Ascii__Encoder enc, const OOC_CHAR8 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+extern void Codec_Ascii__EncoderDesc_EncodeUTF16(Codec_Ascii__Encoder enc, const OOC_CHAR16 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+#define _TBN_Codec_Ascii__EncoderDesc_EncodeUTF16 4
+typedef void (*_TBP_Codec_Ascii__EncoderDesc_EncodeUTF16)(Codec_Ascii__Encoder enc, const OOC_CHAR16 s[], OOC_LEN s_0d, OOC_INT32 start, OOC_INT32 end, ADT_StringBuffer__StringBuffer b);
+extern void Codec_Ascii__Register(void);
+extern void OOC_Codec_Ascii_init(void);
+extern void OOC_Codec_Ascii_open(RT0__Module client);
+extern void OOC_Codec_Ascii_destroy(void);
+extern void OOC_Codec_Ascii_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_Codec_Ascii__Ascii;
+extern RT0__StructDesc _td_Codec_Ascii__AsciiDesc;
+extern RT0__StructDesc _td_Codec_Ascii__Decoder;
+extern RT0__StructDesc _td_Codec_Ascii__DecoderDesc;
+extern RT0__StructDesc _td_Codec_Ascii__Encoder;
+extern RT0__StructDesc _td_Codec_Ascii__EncoderDesc;
+extern RT0__StructDesc _td_Codec_Ascii__512;
+extern RT0__StructDesc _td_Codec_Ascii__860;
+extern RT0__StructDesc _td_Codec_Ascii__1072;
+extern RT0__StructDesc _td_Codec_Ascii__1329;
+extern RT0__StructDesc _td_Codec_Ascii__1965;
+#endif /* _MODULE_Codec_Ascii_ */
+
+/* --- */

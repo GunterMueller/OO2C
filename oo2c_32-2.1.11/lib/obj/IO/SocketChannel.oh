@@ -1,0 +1,74 @@
+#ifndef _MODULE_IO_SocketChannel_
+#define _MODULE_IO_SocketChannel_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <IO.oh>
+#include <IO/Address.oh>
+#include <IO/Socket.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct IO_SocketChannel__ChannelDesc *IO_SocketChannel__Channel;
+typedef struct IO_SocketChannel__ChannelDesc {
+  OOC_UINT32 readyOps;
+  IO__SelectionKeyList keys;
+  IO_Socket__Socket socket;
+  OOC_CHAR8 blocking;
+  OOC_CHAR8 connected;
+  OOC_CHAR8 connectionPending;
+} IO_SocketChannel__ChannelDesc;
+typedef struct IO_SocketChannel__ServerChannelDesc *IO_SocketChannel__ServerChannel;
+typedef struct IO_SocketChannel__ServerChannelDesc {
+  OOC_UINT32 readyOps;
+  IO__SelectionKeyList keys;
+  IO_Socket__Server socket;
+} IO_SocketChannel__ServerChannelDesc;
+extern void IO_SocketChannel__ChannelDesc_SetBlocking(IO_SocketChannel__Channel ch, OOC_CHAR8 block);
+#define _TBN_IO_SocketChannel__ChannelDesc_SetBlocking 4
+typedef void (*_TBP_IO_SocketChannel__ChannelDesc_SetBlocking)(IO_SocketChannel__Channel ch, OOC_CHAR8 block);
+extern OOC_CHAR8 IO_SocketChannel__ChannelDesc_Connect(IO_SocketChannel__Channel ch, IO_Address__Socket endPoint);
+#define _TBN_IO_SocketChannel__ChannelDesc_Connect 12
+typedef OOC_CHAR8 (*_TBP_IO_SocketChannel__ChannelDesc_Connect)(IO_SocketChannel__Channel ch, IO_Address__Socket endPoint);
+extern OOC_CHAR8 IO_SocketChannel__ChannelDesc_FinishConnect(IO_SocketChannel__Channel ch);
+#define _TBN_IO_SocketChannel__ChannelDesc_FinishConnect 13
+typedef OOC_CHAR8 (*_TBP_IO_SocketChannel__ChannelDesc_FinishConnect)(IO_SocketChannel__Channel ch);
+extern OOC_INT32 IO_SocketChannel__ChannelDesc_Read(IO_SocketChannel__Channel ch, OOC_CHAR8 buffer[], OOC_LEN buffer_0d, OOC_INT32 start, OOC_INT32 length);
+#define _TBN_IO_SocketChannel__ChannelDesc_Read 8
+typedef OOC_INT32 (*_TBP_IO_SocketChannel__ChannelDesc_Read)(IO_SocketChannel__Channel ch, OOC_CHAR8 buffer[], OOC_LEN buffer_0d, OOC_INT32 start, OOC_INT32 length);
+extern OOC_INT32 IO_SocketChannel__ChannelDesc_Write(IO_SocketChannel__Channel ch, const OOC_CHAR8 buffer[], OOC_LEN buffer_0d, OOC_INT32 start, OOC_INT32 length);
+#define _TBN_IO_SocketChannel__ChannelDesc_Write 9
+typedef OOC_INT32 (*_TBP_IO_SocketChannel__ChannelDesc_Write)(IO_SocketChannel__Channel ch, const OOC_CHAR8 buffer[], OOC_LEN buffer_0d, OOC_INT32 start, OOC_INT32 length);
+extern void IO_SocketChannel__ChannelDesc_Close(IO_SocketChannel__Channel ch);
+#define _TBN_IO_SocketChannel__ChannelDesc_Close 5
+typedef void (*_TBP_IO_SocketChannel__ChannelDesc_Close)(IO_SocketChannel__Channel ch);
+extern IO_SocketChannel__Channel IO_SocketChannel__Open(void);
+extern IO_SocketChannel__Channel IO_SocketChannel__Connect(IO_Address__Socket remote);
+extern OOC_INT32 IO_SocketChannel__ChannelDesc_FileDescriptor(IO_SocketChannel__Channel ch);
+#define _TBN_IO_SocketChannel__ChannelDesc_FileDescriptor 1
+typedef OOC_INT32 (*_TBP_IO_SocketChannel__ChannelDesc_FileDescriptor)(IO_SocketChannel__Channel ch);
+extern IO_SocketChannel__ServerChannel IO_SocketChannel__OpenServer(void);
+extern void IO_SocketChannel__ServerChannelDesc_SetBlocking(IO_SocketChannel__ServerChannel ch, OOC_CHAR8 block);
+#define _TBN_IO_SocketChannel__ServerChannelDesc_SetBlocking 4
+typedef void (*_TBP_IO_SocketChannel__ServerChannelDesc_SetBlocking)(IO_SocketChannel__ServerChannel ch, OOC_CHAR8 block);
+extern IO_SocketChannel__Channel IO_SocketChannel__ServerChannelDesc_Accept(IO_SocketChannel__ServerChannel ch);
+#define _TBN_IO_SocketChannel__ServerChannelDesc_Accept 8
+typedef IO_SocketChannel__Channel (*_TBP_IO_SocketChannel__ServerChannelDesc_Accept)(IO_SocketChannel__ServerChannel ch);
+extern OOC_INT32 IO_SocketChannel__ServerChannelDesc_FileDescriptor(IO_SocketChannel__ServerChannel ch);
+#define _TBN_IO_SocketChannel__ServerChannelDesc_FileDescriptor 1
+typedef OOC_INT32 (*_TBP_IO_SocketChannel__ServerChannelDesc_FileDescriptor)(IO_SocketChannel__ServerChannel ch);
+extern void OOC_IO_SocketChannel_init(void);
+extern void OOC_IO_SocketChannel_open(RT0__Module client);
+extern void OOC_IO_SocketChannel_destroy(void);
+extern void OOC_IO_SocketChannel_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_IO_SocketChannel__Channel;
+extern RT0__StructDesc _td_IO_SocketChannel__ChannelDesc;
+extern RT0__StructDesc _td_IO_SocketChannel__ServerChannel;
+extern RT0__StructDesc _td_IO_SocketChannel__ServerChannelDesc;
+extern RT0__StructDesc _td_IO_SocketChannel__2128;
+extern RT0__StructDesc _td_IO_SocketChannel__2481;
+#endif /* _MODULE_IO_SocketChannel_ */
+
+/* --- */

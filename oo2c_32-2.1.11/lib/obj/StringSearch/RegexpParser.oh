@@ -1,0 +1,99 @@
+#ifndef _MODULE_StringSearch_RegexpParser_
+#define _MODULE_StringSearch_RegexpParser_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <Object.oh>
+#include <StringSearch.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+#define StringSearch_RegexpParser__backslash (OOC_CHAR8)'\134'
+#define StringSearch_RegexpParser__sizeCHAR 256
+#define StringSearch_RegexpParser__sizeSET 32
+typedef OOC_INT8 StringSearch_RegexpParser__FactorType;
+#define StringSearch_RegexpParser__matchGroup (-1)
+#define StringSearch_RegexpParser__matchChar 0
+#define StringSearch_RegexpParser__matchCharIgnoreCase 1
+#define StringSearch_RegexpParser__matchAnyButNewline 3
+#define StringSearch_RegexpParser__matchAtFirstChar 4
+#define StringSearch_RegexpParser__matchAfterLastChar 5
+#define StringSearch_RegexpParser__matchSet 6
+#define StringSearch_RegexpParser__matchSetInverted 7
+typedef OOC_UINT32 *StringSearch_RegexpParser__CharSet;
+typedef struct StringSearch_RegexpParser__FactorDesc *StringSearch_RegexpParser__Factor;
+typedef struct StringSearch_RegexpParser__GroupDesc *StringSearch_RegexpParser__Group;
+typedef struct StringSearch_RegexpParser__FactorDesc {
+  OOC_INT8 type;
+  OOC_CHAR8 _char;
+  OOC_CHAR8 __pad2;
+  OOC_CHAR8 __pad3;
+  StringSearch_RegexpParser__CharSet charSet;
+  StringSearch_RegexpParser__Group group;
+} StringSearch_RegexpParser__FactorDesc;
+typedef OOC_INT8 StringSearch_RegexpParser__QuantifierType;
+#define StringSearch_RegexpParser__exactlyOnce 0
+#define StringSearch_RegexpParser__zeroOrOnceGreedy 1
+#define StringSearch_RegexpParser__zeroOrMoreGreedy 2
+#define StringSearch_RegexpParser__onceOrMoreGreedy 3
+typedef struct StringSearch_RegexpParser__TermDesc *StringSearch_RegexpParser__Term;
+typedef struct StringSearch_RegexpParser__TermDesc {
+  StringSearch_RegexpParser__Term next;
+  StringSearch_RegexpParser__Factor factor;
+  OOC_INT8 quantifier;
+} StringSearch_RegexpParser__TermDesc;
+typedef struct StringSearch_RegexpParser__ExprDesc *StringSearch_RegexpParser__Expr;
+typedef struct StringSearch_RegexpParser__ExprDesc {
+  StringSearch_RegexpParser__Expr next;
+  StringSearch_RegexpParser__Term termList;
+} StringSearch_RegexpParser__ExprDesc;
+typedef OOC_INT8 StringSearch_RegexpParser__GroupId;
+typedef struct StringSearch_RegexpParser__GroupDesc {
+  StringSearch_RegexpParser__Expr exprList;
+  OOC_INT8 groupId;
+} StringSearch_RegexpParser__GroupDesc;
+typedef struct StringSearch_RegexpParser__BuilderDesc *StringSearch_RegexpParser__Builder;
+typedef struct StringSearch_RegexpParser__BuilderDesc {
+  char __dummy;
+} StringSearch_RegexpParser__BuilderDesc;
+extern void StringSearch_RegexpParser__UpperLower(OOC_CHAR8 ch, OOC_CHAR8 *upper, OOC_CHAR8 *lower);
+extern void StringSearch_RegexpParser__InitGroup(StringSearch_RegexpParser__Group group, OOC_INT8 groupId);
+extern StringSearch_RegexpParser__Group StringSearch_RegexpParser__BuilderDesc_NewGroup(StringSearch_RegexpParser__Builder b, OOC_INT8 groupId);
+#define _TBN_StringSearch_RegexpParser__BuilderDesc_NewGroup 0
+typedef StringSearch_RegexpParser__Group (*_TBP_StringSearch_RegexpParser__BuilderDesc_NewGroup)(StringSearch_RegexpParser__Builder b, OOC_INT8 groupId);
+extern void StringSearch_RegexpParser__InitExpr(StringSearch_RegexpParser__Expr expr);
+extern StringSearch_RegexpParser__Expr StringSearch_RegexpParser__BuilderDesc_NewExpr(StringSearch_RegexpParser__Builder b);
+#define _TBN_StringSearch_RegexpParser__BuilderDesc_NewExpr 1
+typedef StringSearch_RegexpParser__Expr (*_TBP_StringSearch_RegexpParser__BuilderDesc_NewExpr)(StringSearch_RegexpParser__Builder b);
+extern void StringSearch_RegexpParser__InitTerm(StringSearch_RegexpParser__Term term);
+extern StringSearch_RegexpParser__Term StringSearch_RegexpParser__BuilderDesc_NewTerm(StringSearch_RegexpParser__Builder b);
+#define _TBN_StringSearch_RegexpParser__BuilderDesc_NewTerm 2
+typedef StringSearch_RegexpParser__Term (*_TBP_StringSearch_RegexpParser__BuilderDesc_NewTerm)(StringSearch_RegexpParser__Builder b);
+extern void StringSearch_RegexpParser__InitFactor(StringSearch_RegexpParser__Factor factor, OOC_INT8 type);
+extern StringSearch_RegexpParser__Factor StringSearch_RegexpParser__BuilderDesc_NewFactor(StringSearch_RegexpParser__Builder b, OOC_INT8 type);
+#define _TBN_StringSearch_RegexpParser__BuilderDesc_NewFactor 3
+typedef StringSearch_RegexpParser__Factor (*_TBP_StringSearch_RegexpParser__BuilderDesc_NewFactor)(StringSearch_RegexpParser__Builder b, OOC_INT8 type);
+extern void StringSearch_RegexpParser__InitBuilder(StringSearch_RegexpParser__Builder b);
+extern StringSearch_RegexpParser__Builder StringSearch_RegexpParser__NewBuilder(void);
+extern StringSearch_RegexpParser__Group StringSearch_RegexpParser__Parse(StringSearch_RegexpParser__Builder b, Object__String8 pattern, OOC_UINT32 flags);
+extern void OOC_StringSearch_RegexpParser_init(void);
+extern void OOC_StringSearch_RegexpParser_open(RT0__Module client);
+extern void OOC_StringSearch_RegexpParser_destroy(void);
+extern void OOC_StringSearch_RegexpParser_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_StringSearch_RegexpParser__2293;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__CharSet;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__Factor;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__Group;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__FactorDesc;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__Term;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__TermDesc;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__Expr;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__ExprDesc;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__GroupDesc;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__Builder;
+extern RT0__StructDesc _td_StringSearch_RegexpParser__BuilderDesc;
+#endif /* _MODULE_StringSearch_RegexpParser_ */
+
+/* --- */

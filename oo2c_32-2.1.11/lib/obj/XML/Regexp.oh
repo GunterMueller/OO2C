@@ -1,0 +1,63 @@
+#ifndef _MODULE_XML_Regexp_
+#define _MODULE_XML_Regexp_
+
+#include <__typemap.h>
+#include <RT0.oh>
+#include <XML/DTD.oh>
+#include <RT0.oh>
+#include <Object.oh>
+#include <Exception.oh>
+typedef struct XML_Regexp__RegexpDesc *XML_Regexp__Regexp;
+typedef OOC_INT32 XML_Regexp__State;
+typedef struct {
+  XML_UnicodeBuffer__CharArray elem;
+  OOC_INT32 next1;
+  OOC_INT32 next2;
+} *XML_Regexp__States;
+typedef struct XML_Regexp__RegexpDesc {
+  XML_Regexp__States states;
+  OOC_INT32 initialState;
+  OOC_INT32 size;
+} XML_Regexp__RegexpDesc;
+typedef struct XML_Regexp__SetDesc *XML_Regexp__Set;
+typedef OOC_INT32 *XML_Regexp__Members;
+typedef struct XML_Regexp__SetDesc {
+  XML_Regexp__Members members;
+  OOC_INT32 size;
+} XML_Regexp__SetDesc;
+typedef struct XML_Regexp__MatcherDesc *XML_Regexp__Matcher;
+typedef struct XML_Regexp__MatcherDesc {
+  XML_Regexp__States states;
+  XML_Regexp__Set current;
+} XML_Regexp__MatcherDesc;
+extern XML_Regexp__Regexp XML_Regexp__New(XML_DTD__CP contentModel);
+extern XML_Regexp__Matcher XML_Regexp__NewMatcher(XML_Regexp__Regexp regexp);
+extern OOC_CHAR8 XML_Regexp__MatcherDesc_Matches(XML_Regexp__Matcher m, XML_UnicodeBuffer__CharArray name);
+#define _TBN_XML_Regexp__MatcherDesc_Matches 0
+typedef OOC_CHAR8 (*_TBP_XML_Regexp__MatcherDesc_Matches)(XML_Regexp__Matcher m, XML_UnicodeBuffer__CharArray name);
+extern OOC_CHAR8 XML_Regexp__MatcherDesc_EndOfRegexp(XML_Regexp__Matcher m);
+#define _TBN_XML_Regexp__MatcherDesc_EndOfRegexp 1
+typedef OOC_CHAR8 (*_TBP_XML_Regexp__MatcherDesc_EndOfRegexp)(XML_Regexp__Matcher m);
+extern XML_UnicodeBuffer__CharArray XML_Regexp__MatcherDesc_ExpectedTags(XML_Regexp__Matcher m, XML_UnicodeBuffer__CharArray currentElement);
+#define _TBN_XML_Regexp__MatcherDesc_ExpectedTags 2
+typedef XML_UnicodeBuffer__CharArray (*_TBP_XML_Regexp__MatcherDesc_ExpectedTags)(XML_Regexp__Matcher m, XML_UnicodeBuffer__CharArray currentElement);
+extern void OOC_XML_Regexp_init(void);
+extern void OOC_XML_Regexp_open(RT0__Module client);
+extern void OOC_XML_Regexp_destroy(void);
+extern void OOC_XML_Regexp_close(RT0__Module client);
+
+/* run-time meta data */
+extern RT0__StructDesc _td_XML_Regexp__Regexp;
+extern RT0__StructDesc _td_XML_Regexp__1057;
+extern RT0__StructDesc _td_XML_Regexp__1048;
+extern RT0__StructDesc _td_XML_Regexp__States;
+extern RT0__StructDesc _td_XML_Regexp__RegexpDesc;
+extern RT0__StructDesc _td_XML_Regexp__Set;
+extern RT0__StructDesc _td_XML_Regexp__1291;
+extern RT0__StructDesc _td_XML_Regexp__Members;
+extern RT0__StructDesc _td_XML_Regexp__SetDesc;
+extern RT0__StructDesc _td_XML_Regexp__Matcher;
+extern RT0__StructDesc _td_XML_Regexp__MatcherDesc;
+#endif /* _MODULE_XML_Regexp_ */
+
+/* --- */
